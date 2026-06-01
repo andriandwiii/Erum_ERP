@@ -7,9 +7,11 @@ const knexConfig = {
     client: String(process.env.DB_CLIENT) || "mysql",
     connection: {
       host: String(process.env.DB_HOST) || "localhost",
+      port: Number(process.env.DB_PORT) || 3306,
       user: String(process.env.DB_USERNAME) || "root",
       password: String(process.env.DB_PASSWORD) || "",
       database: String(process.env.DB_NAME) || "",
+      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false,
     },
     migrations: {
       directory: "./src/migrations",
@@ -21,9 +23,11 @@ const knexConfig = {
     client: String(process.env.DB_CLIENT) || "mysql",
     connection: {
       host: String(process.env.DB_HOST) || "localhost",
+      port: Number(process.env.DB_PORT) || 3306,
       user: String(process.env.DB_USERNAME) || "root",
       password: String(process.env.DB_PASSWORD) || "",
       database: String(process.env.DB_NAME) || "",
+      ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false,
     },
     migrations: {
       directory: "./src/migrations",
