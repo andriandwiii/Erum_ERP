@@ -2,7 +2,7 @@ import { Axios } from '@/utils/axios';
 import { API_ENDPOINTS } from '@/app/api/api';
 import { NextRequest, NextResponse } from 'next/server';
 
-export const GET = async ({ params }: { params: { id: number } }) => {
+export const GET = async (request: NextRequest, { params }: { params: { id: number } }) => {
     try {
         const response = await Axios.get(API_ENDPOINTS.GETMESINBYID(params.id));
 
@@ -23,7 +23,7 @@ export const PUT = async (request: NextRequest, { params }: { params: { id: numb
     }
 };
 
-export const DELETE = async ({ params }: { params: { id: number } }) => {
+export const DELETE = async (request: NextRequest, { params }: { params: { id: number } }) => {
     try {
         // console.log(params.id);
         const response = await Axios.delete(API_ENDPOINTS.DELETEMESIN(params.id));
