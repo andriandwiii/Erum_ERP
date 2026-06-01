@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { useRouter } from 'next/navigation';
-import logoImg from './logo.jpeg';
+import logoImg from './Logo.jpeg';
 export default function LandingERP() {
   const router = useRouter();
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'biannual' | 'annual'>('monthly');
