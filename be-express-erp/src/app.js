@@ -50,11 +50,15 @@ const app = express();
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 // ── CORS
-const allowedOrigins = ["http://localhost:3000"];
+const allowedOrigins = ["http://localhost:3000", "https://erum-erp.vercel.app"];
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) callback(null, true);
-    else callback(new Error("Not allowed by CORS"));
+    // Memperbolehkan semua asal untuk Vercel / fleksibilitas
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
   },
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization", "X-Timestamp", "X-Signature"],
