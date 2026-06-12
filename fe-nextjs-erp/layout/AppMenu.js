@@ -100,6 +100,25 @@ if (userRole === "SUPERADMIN") {
             ]
         },
         {
+            label: "SISTEM PRODUKSI",
+            icon: "pi pi-fw pi-box",
+            items: [
+                { label: "Manajemen Produksi", icon: "pi pi-fw pi-server", to: "/superadmin/produksi" },
+                { label: "Pergerakan Barang", icon: "pi pi-fw pi-sync", to: "/superadmin/produksi/pergerakan" },
+                { label: "Kalkulasi HPP", icon: "pi pi-fw pi-calculator", to: "/superadmin/produksi/hpp" }
+            ]
+        },
+        {
+            label: "SISTEM PENJUALAN & AI",
+            icon: "pi pi-fw pi-chart-line",
+            items: [
+                { label: "Dasbor Penjualan", icon: "pi pi-fw pi-home", to: "/superadmin/penjualan/dasbor" },
+                { label: "Faktur & Keuangan", icon: "pi pi-fw pi-wallet", to: "/superadmin/penjualan/faktur" },
+                { label: "Wawasan Pelanggan", icon: "pi pi-fw pi-users", to: "/superadmin/penjualan/wawasan" },
+                { label: "Pusat Pemasaran AI", icon: "pi pi-fw pi-star", to: "/superadmin/penjualan" }
+            ]
+        },
+        {
             label: "SISTEM & ADMIN",
             icon: "pi pi-fw pi-th-large",
             items: [
