@@ -6,8 +6,10 @@ import fs from "fs";
  * 🔹 Universal upload function dengan custom folder
  */
 const createUpload = (folderName, filePrefix = "") => {
-  // Folder akan dibuat di dalam directory 'uploads'
-  const uploadDir = `./uploads/${folderName}`;
+  // Folder akan dibuat di dalam directory 'uploads' (lokal) atau '/tmp/uploads' (Vercel)
+  const isVercel = process.env.VERCEL || process.env.NODE_ENV === 'production';
+  const baseDir = isVercel ? '/tmp/uploads' : './uploads';
+  const uploadDir = `${baseDir}/${folderName}`;
 
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {

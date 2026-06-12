@@ -24,6 +24,9 @@ router.get("/status", PresensiController.cekStatusHarian);
 // Public agar kios absen mandiri bisa akses
 router.get("/setting", PresensiController.getSettingPresensi);
 
+// GET /api/master-presensi/fix-db (KHUSUS FIX VERCEL DATABASE)
+router.get("/fix-db", PresensiController.fixDb);
+
 // POST /api/master-presensi/masuk
 router.post(
   "/masuk",

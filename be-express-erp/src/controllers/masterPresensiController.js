@@ -286,3 +286,20 @@ export const triggerAutoAlpa = async (req, res) => {
     return res.status(500).json({ status: "error", message: "Gagal menjalankan auto mark alpa." });
   }
 };
+
+/* ============================================================
+ * 7. FIX DB (KHUSUS VERCEL)
+ * ============================================================ */
+export const fixDb = async (req, res) => {
+  try {
+    await db.schema.alterTable('master_presensi', table => {
+        table.string('SHIFT_SNAPSHOT', 255).nullable();
+    });
+    return res.json({ status: "success", message: "Column SHIFT_SNAPSHOT added to Vercel DB!" });
+  } catch (err) {
+    if (err.code === 'ER_DUP_FIELDNAME') {
+        return res.json({ status: "success", message: "Column already exists in Vercel DB!" });
+    }
+    return res.status(500).json({ status: "error", message: err.message });
+  }
+};
